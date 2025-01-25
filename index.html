@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Registration Form</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="IMB-FAV-ICON.png">
+    <!-- Bootstrap -->
+<link rel="stylesheet" href="bootstrap.min.css">
+
+<!-- Font awesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    input{
+        /* width: 100%; */
+        width:100%;
+        background-color: white;
+        border: none;
+        padding: 0.4rem 0.4rem;
+        border-radius: 5px;
+    }
+    input:focus{
+        outline: none;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    }
+    textarea:focus{
+        outline: none;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    }
+    select:focus{
+        outline: none;
+    }
+    select{
+        width: 100%;
+        background-color: white;
+        border: none;
+        padding: 0.4rem 0.4rem;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    }
+    option{
+        text-align: center;
+    }
+    textarea{
+        width: 100%;
+        background-color: white;
+        border: none;
+        padding: 0.4rem 0.4rem;
+        border-radius: 5px;
+    }
+    label{
+        font-weight: bold;
+    
+    }
+    .box{
+        border-radius: 10px;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    }
+.auntheticate{
+    width: 2.8rem;
+    display: inline-block; 
+}
+
+.btn:hover{
+    opacity: 0.9;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#scan{
+  display: none;
+}
+
+.refresh-btn:hover{
+  outline: none;
+}
+
+
+
+/* ----------------------Responsive--------------------- */
+@media only screen and (max-width:1000px){
+h2{
+  font-size: 1.5rem;
+}
+}
+
+@media only screen and (max-width:800px){
+h2{
+  font-size: 1rem;
+}
+}
+
+@media only screen and (max-width:510px){
+h2{
+  font-size: 0.9rem;
+}
+}
+
+@media only screen and (max-width:430px){
+.roll-label{
+  font-size: small;
+}
+label,input,p,option,textarea,i{
+  font-size:12px;
+}
+
+}
+@media only screen and (max-width:500px){
+  .designation-label{
+    font-size:11px;
+  }
+  h4{
+    font-size:20px;
+
+  }
+}
+
+@media only screen and (max-width:400px){
+  .designation-label{
+    font-size:10px;
+  }
+  .address-label{
+    font-size:10px;
+  }
+  .refresh-btn i{
+    width: 5px;
+  }
+  #captcha-text{
+    font-size:10px;
+
+  }
+
+}
+@media only screen and (max-width:430px){
+  #submit-btn{
+    font-size:10px;
+
+  }
+}
+
+@media only screen and (max-width:370px){
+  .designation-label{
+    font-size:9px;
+  }
+}
+
+@media only screen and (max-width:767px){
+  /* input[type=checkbox]{
+    font-size:12px;
+    ;
+  } */
+}
+
+</style>
+
+</head>
+<body onload="show()" style="position: relative;">
+
+  <div id="scan" style="position: absolute; width: 20%; height: 20%;z-index: 2000; top:50%;left:50%; transform: translate(-50%, -50%);"></div>
+
+    <div class="form-container container px-5 py-5" style="background-color: #f5f5f5;">
+
+                <div class="row heading">
+                    <div class="col-6" style="display: flex;align-items: center;justify-content: center;">
+                        
+                        <h2 class="heading" style="color:rgb(86, 84, 122); text-shadow: 0px 1px 1px black;">
+                            Alumni Registration Form
+                        </h2>
+                    </div>
+                    <hr>
+                    <div class="col-6" class="logo" style="display: flex;align-items: center;justify-content: center;">
+                        <img src="imbsom png blue logo.png" alt="" class="img-fluid" style="filter: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.5));">
+                    </div>
+                </div>            
+        <form class="py-3" id="registrationForm" action="send-email.php" method="post" enctype="multipart/form-data">
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+
+                    <div class="col-lg-6 col-12">
+
+                        <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+
+                          <div class="pt-2"><label for="name">Name of the Student: <span style="color: red;">*</span></label>
+                          </div>
+
+                          <div  id="auntheticate-animation1" class="auntheticate">
+                          </div>
+
+                        </div>
+                            <input type="text" id="name" name="name">
+                            <p id="auntheticate1"></p>
+
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap:nowrap;">
+
+                        <div class="pt-2">
+                          <label for="rollNo" class="roll-label">Roll Number of the Student: <span style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;">(Optional)</span></label>
+                        </div>
+
+                        <div>
+                        <div id="auntheticate-animation11" class="auntheticate"></div>
+                        </div>
+                      </div>
+
+                             <input type="text" id="rollNo" name="rollNo">
+                             <p id="auntheticate11"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+
+                        <div class="pt-2">
+                          <label for="personalEmail">Email ID: <span style="color: red;">*</span> <span style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;">(Personal)</span></label>
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation2" class="auntheticate"></div><br>
+                        </div>
+                      </div>
+                            <input type="email" id="personalEmail" name="personalEmail">
+                            <p id="auntheticate2"></p>
+
+                    </div>
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                        <div class="pt-2">
+                          <label for="officialEmail">Email ID: <span style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;">(Official)</span></label>
+                        </div>
+                        <div>
+                          <div id="auntheticate-animation3" class="auntheticate"></div>
+                        </div>
+                      </div>
+
+                            <input type="email" id="officialEmail" name="officialEmail">
+                            <p id="auntheticate3"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+
+                        <div  class="pt-2">
+                          <label for="mobile">Mobile Number: <span style="color: red;">*</span></label>
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation4" class="auntheticate"></div><br>
+                        </div>
+
+                      </div>
+                            <input type="number" id="mobile" name="mobile">
+                            <p id="auntheticate4"></p>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                        <div class="pt-2">
+                          <label for="whatsapp">WhatsApp Number: </label>
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation5" class="auntheticate"></div>
+                        </div>
+                      </div>
+                            <input type="number" id="whatsapp" name="whatsapp">
+                            <p id="auntheticate5"></p>
+                    </div>
+
+                </div>
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;align-items: center;justify-content: center;">
+
+                    <div id="image-div" class="col-12 col-lg-3 pb-4"></div>
+
+                    <div class="col-12 col-lg-6">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;justify-content: center;">
+
+                        <div  class="pt-2">
+                          <!-- <label for="image" class="text-center" style="cursor: pointer;">Upload Passportsize photo <span style="color: red;">*   </span></label> -->
+                          <label for="image">Upload Passportsize photo <span style="color: red;">*</span></label>
+
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation10" class="auntheticate"></div>
+                        </div>
+
+                      </div>
+                        <input type="file" id="image" name="image" accept="image/*" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;cursor: pointer;">
+                        <p id="auntheticate6" style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;text-align: center;">Upload image within 2MB</p>
+                        <p id="auntheticate10" style="text-align: center;"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="row box my-4 py-5 specialization" style="background-color: #e5ebf1;justify-content: center; align-items: center;flex-direction: column;">
+
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+
+                        <div class="pt-2">
+                          <label for="" style="font-size:large;">Specialization <span style="color: red;">*</span></label>
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation9" class="auntheticate"></div>
+                        </div>
+
+                      </div>
+
+                        <div class="py-2 row" style="flex-wrap: wrap;justify-content: center;align-items: center;">
+
+                            <div class="px-4 col-12 col-lg-auto py-2">
+                                <input type="checkbox" name="options[]" id="Marketing_Management" value="Marketing Management" style="width: 1rem !important;">
+                                <label style="font-weight:400;" for="Marketing_Management">Marketing Management</label>
+                            </div>
+    
+                            <div class="px-4 col-12 col-lg-auto py-2">
+                                <input type="checkbox" name="options[]" id="Financial_Management" value="Financial Management"style="width: 1rem !important;"> 
+                                <label style="font-weight:400;" for="Financial_Management">Financial Management</label> 
+                            </div>
+    
+                            <div class="px-4 col-12 col-lg-auto py-2">
+                                <input type="checkbox" name="options[]" id="Human_Resource_Management" value="Human Resource Management"style="width: 1rem !important;"> 
+                                <label style="font-weight:400;" for="Human_Resource_Management">Human Resource Management</label>
+                            </div>
+    
+                            <div class="px-4 col-12 col-lg-auto py-2">
+                                <input type="checkbox" name="options[]" id="Information_systems_Management" value="Information systems Management"style="width: 1rem !important;"> 
+                                <label style="font-weight:400;" for="Information_systems_Management">Information systems Management</label> 
+                            </div>
+
+                            <div class="px-4 col-12 col-lg-auto py-2">
+                              <input type="checkbox" name="options[]" id="Business_Analytics" value="Business Analytics"style="width: 1rem !important;"> 
+                              <label style="font-weight:400;" for="Business_Analytics">Business Analytics</label> 
+                          </div>
+
+                          <div class="px-4 col-12 col-lg-auto py-2">
+                            <input type="checkbox" name="options[]" id="Logistics_and Supply_Chain Management" value="Logistics and Supply Chain Management"style="width: 1rem !important;"> 
+                            <label style="font-weight:400;" for="Logistics_and Supply_Chain Management">Logistics and Supply Chain Management</label> 
+                        </div>
+
+                        <div class="px-4 col-12 col-lg-auto py-2">
+                          <input type="checkbox" name="options[]" id="Operations_Management" value="Operations Management"style="width: 1rem !important;"> 
+                          <label style="font-weight:400;" for="Operations_Management">Operations Management</label> 
+                      </div>
+
+    
+                        </div>
+
+
+                    <p id="auntheticate9"></p>
+
+                </div>
+
+                             <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+                                <div class="col-lg-6 col-12">
+
+                                  <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                                    <div class="pt-2">
+                                      <label for="batch">Batch: <span style="color: red;">*</span></label>
+                                    </div>
+
+                                    <div>
+                                      <div id="auntheticate-animation8" class="auntheticate"></div>
+                                    </div>
+
+                                  </div>
+
+
+                                     <select name="batch" id="batch">
+                                        <option value="batch">Batch</option>
+                                        <option value="2023-2025">2023-2025</option>
+                                        <option value="2022-2024">2022-2024</option>
+                                        <option value="2021-2023">2021-2023</option>
+                                        <option value="2020-2022">2020-2022</option>
+                                        <option value="2019-2021">2019-2021</option>
+                                        <option value="2010-2012">2010-2012</option>
+                                        <option value="2009-2011">2009-2011</option>
+                                        <option value="2008-2010">2008-2010</option>
+                                        <option value="2007-2009">2007-2009</option>
+                                        <option value="2006-2008">2006-2008</option>
+                                        <option value="2005-2007">2005-2007</option>
+                                        <option value="2004-2006">2004-2006</option>
+                                        <option value="2003-2005">2003-2005</option>
+                                        <option value="2002-2004">2002-2004</option>
+                                        <option value="2001-2003">2001-2003</option>
+                                        <option value="2000-2002">2000-2002</option>
+                                        <option value="1999-2001">1999-2001</option>
+                                        <option value="1998-2000">1998-2000</option>
+                                        <option value="1997-1999">1997-1999</option>
+                                        <option value="1996-1998">1996-1998</option>
+                                        <option value="1995-1997">1995-1997</option>
+                                     </select>
+                                     <p id="auntheticate8"></p>
+
+                            </div>
+
+                                <div class="col-lg-6 col-12">
+                                  <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                                    <div class="pt-2">
+                                      <label for="presentStatus">Current / Last Employer:</label>
+                                    </div>
+
+                                    <div>
+                                      <div id="auntheticate-animation12" class="auntheticate"></div>
+                                    </div>
+                                    
+                                  </div>
+                                    <input type="text" id="presentStatus" name="presentStatus">
+                                    <p id="auntheticate12"></p>
+
+                                </div>
+            
+                            </div>
+
+                            <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+                                <div class="col-lg-6 col-12">
+
+                                  <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                                    <div class="pt-2">
+
+                                      <label for="designation" class="designation-label">Designation / Position in the Company: <span style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;">(Current)</span></label>
+
+                                      </div>
+
+                                    <div>
+                                      <div id="auntheticate-animation13" class="auntheticate"></div>
+                                    </div>
+                                    
+                                  </div>
+
+
+                                        <input type="text" id="designation" name="designation">
+                                        <p id="auntheticate13" class="designation-label"></p>
+
+                                </div>
+                                <div class="col-lg-6 col-12">
+
+                                  <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                                    <div class="pt-2">
+                                      <label for="workingPlace">Present Working Place:</label>
+                                     </div>
+                                    <div>
+                                      <div id="auntheticate-animation14" class="auntheticate"></div>
+                                    </div>
+                                    
+                                  </div>
+
+                                        <input id="workingPlace" name="workingPlace" rows="3"></input>
+                                        <p id="auntheticate14"></p>
+
+                                </div>
+            
+                            </div>
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                        <div class="pt-2">
+                          <label for="companyAddress">Company Address / Location:</label>
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation15" class="auntheticate"></div>
+                        </div>
+
+                      </div>
+
+                            <textarea id="companyAddress" name="companyAddress" rows="3"></textarea>
+                            <p id="auntheticate15"></p>
+
+                    </div>
+                    <div class="col-lg-6 col-12">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;">
+                        <div class="pt-2">
+                          <label for="areaOfInterest">Current Work Profile in Details:</label>
+                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation17" class="auntheticate"></div>
+                        </div>
+
+                      </div>
+
+                            <textarea id="areaOfInterest" name="areaOfInterest" rows="3"></textarea>
+                            <p style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;">Note:"Briefly describe your responsibilities with your current job (500 Characters)"</p> 
+                            <p id="auntheticate17"></p>  
+
+                    </div>
+
+                </div>
+
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;justify-content: center;align-items: center;">
+                    <div class="col-9 text-center">
+
+                      <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;justify-content: center;">
+                        <div class="pt-2">
+                          <label for="address" class="address-label">Address: <span style="color: red;">*</span> <span style=" color:rgba(0, 0, 0, 0.321);font-style: italic;font-weight:400;">(For Correspondence)</span></label>                        </div>
+
+                        <div>
+                          <div id="auntheticate-animation7" class="auntheticate"></div>
+                        </div>
+
+                      </div>
+
+                            <textarea id="address" name="address" rows="5"></textarea>
+                            <p id="auntheticate7"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;justify-content: center;align-items: center;flex-direction: column;" >
+
+                  <div class="row pl-4" style="align-items: center;flex-wrap: nowrap;justify-content: center;">
+                    <div class="pt-2">
+                      <h4 class="" style="display: inline-block;font-weight: 500;">Enter Captcha</h4>                        </div>
+
+                    <div>
+                      <div id="auntheticate-animation18" class="auntheticate" style=""></div>
+                    </div>
+
+                  </div>
+
+
+                  <div style="width: 100%; text-align: center;display: flex; align-items: center; justify-content: center;">
+
+
+
+
+
+                    <div class="row" style="width: 40%;align-items: center;justify-content:space-evenly;">
+
+   
+                      <div  id="captcha-text" class="px-3 py-2 col-lg-6 col-12" style="background-color: white;letter-spacing: 0.8rem;box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;border-radius: 5px;text-align: center;font-weight: 600;">
+                        gjkgkjgh3
+                      </div>
+  
+                      <div class="col-lg-6 col-12 py-2" style="display: flex; align-items: center;justify-content: center;">
+
+                        <input type="text" id="captcha-input" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">
+
+                        <button type="button" class="refresh-btn" style="border: none;background: transparent;" onclick="refresh()">
+                          <i class="fa-solid fa-arrows-rotate" style="color: #56547a; font-size: 1rem;"></i>
+                        </button>
+
+                      </div>
+
+  
+                    </div>
+
+                  </div>
+                  <p id="auntheticate18" style=""></p>           
+
+
+                </div>
+
+                <div class="row box my-4 py-5" style="background-color: #e5ebf1;">
+                  <div class="col-12" style="text-align: center;">
+                      <button class="py-2 btn text-center" id="submit-btn" type="submit" style="width: 20%;box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;border: none;background-color: #56547a;color: white;border-radius: 5px;">Submit</button>
+                  </div>
+              </div>
+
+
+
+                </div>
+
+
+        </form>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+    <script>
+
+    // -----------------------------Captcha-----------------------------
+
+       var input_captcha=document.getElementById("captcha-input");
+        var auntheticate18=document.getElementById("auntheticate18");
+        var captcha_text=document.getElementById("captcha-text")
+
+        var tickAnimation18 = "tick.json"; 
+        var crossAnimation18 = "cross.json";
+
+    const animationContainer18 = document.getElementById("auntheticate-animation18");
+
+    let animationInstance18 = lottie.loadAnimation({
+      container: animationContainer18,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation18(animationPath18) {
+      animationInstance18.destroy(); 
+      animationInstance18 = lottie.loadAnimation({
+        container: animationContainer18,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath18,
+      });
+    }
+
+    function cross_captcha(animationPath18){
+        animationInstance18.destroy(); 
+      animationInstance18 = lottie.loadAnimation({
+        container: animationContainer18,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath18,
+      });
+    }
+
+    function change_captcha(){
+
+      console.log(captcha_text.innerHTML)
+
+      if(input_captcha.value.length===0){
+
+        cross_captcha(crossAnimation18);
+        auntheticate18.innerHTML="";
+        animationContainer18.style.width="2rem",
+        setTimeout(function(){
+            auntheticate18.innerHTML="*Captcha is not filled*"
+            auntheticate18.style.color="#cc0707";
+        },1000)
+
+
+      }
+
+      if(input_captcha.value!==captcha_text.innerHTML && input_captcha.value.length>0){
+
+        cross_captcha(crossAnimation18);
+        auntheticate18.innerHTML="";
+        animationContainer18.style.width="2rem",
+        setTimeout(function(){
+            auntheticate18.innerHTML="*Captcha is not matched*"
+            auntheticate18.style.color="#cc0707";
+        },1000)
+
+      }
+
+      else{
+
+        if(input_captcha.value===captcha_text.innerHTML){
+
+        playAnimation18(tickAnimation18);
+        auntheticate18.innerHTML="";
+        animationContainer18.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate18.innerHTML="*Captcha is filled*"
+            auntheticate18.style.color="#0bbc04";
+        },1000)
+
+
+        }
+
+
+      }
+
+
+
+
+      // else{
+
+      //   if (value18.length>0 && value18===captcha_text_value) {
+      //   playAnimation18(tickAnimation18);
+      //   auntheticate18.innerHTML="";
+      //   animationContainer18.style.width="2.8rem",
+      //   setTimeout(function(){
+      //       auntheticate18.innerHTML="*Captcha is filled*"
+      //       auntheticate18.style.color="#0bbc04";
+      //   },1000)
+
+      // } 
+
+      
+
+      // }
+
+
+    }
+
+
+    // });
+    input_captcha.addEventListener("change",change_captcha);
+
+
+        // ----------------------------Name------------------------
+
+        var input_name=document.getElementById("name");
+        var auntheticate1=document.getElementById("auntheticate1")
+
+        var tickAnimation1 = "tick.json"; 
+        var crossAnimation1 = "cross.json";
+
+    const animationContainer1 = document.getElementById("auntheticate-animation1");
+
+    let animationInstance1 = lottie.loadAnimation({
+      container: animationContainer1,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation1(animationPath1) {
+      animationInstance1.destroy(); 
+      animationInstance1 = lottie.loadAnimation({
+        container: animationContainer1,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath1,
+      });
+    }
+
+    function cross(animationPath1){
+        animationInstance1.destroy(); 
+      animationInstance1 = lottie.loadAnimation({
+        container: animationContainer1,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath1,
+      });
+    }
+
+    function change_name(){
+
+      const value1 = event.target.value.trim();
+      if (value1) {
+        playAnimation1(tickAnimation1);
+        auntheticate1.innerHTML="";
+        animationContainer1.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate1.innerHTML="*Name of the student is filled*"
+            auntheticate1.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        cross(crossAnimation1);
+        auntheticate1.innerHTML="";
+        animationContainer1.style.width="2rem",
+        setTimeout(function(){
+            auntheticate1.innerHTML="*Name of the student is not filled*"
+            auntheticate1.style.color="#cc0707";
+        },1000)
+      }
+
+    }
+
+    // input_name.addEventListener("change", (event) => {
+
+    // });
+    input_name.addEventListener("change",change_name);
+
+
+
+    // --------------------------Roll no--------------------------------
+
+    
+    var input_roll=document.getElementById("rollNo");
+        var auntheticate11=document.getElementById("auntheticate11")
+
+        var tickAnimation11 = "tick.json"; 
+        var crossAnimation11 = "cross.json";
+
+    const animationContainer11 = document.getElementById("auntheticate-animation11");
+
+    let animationInstance11 = lottie.loadAnimation({
+      container: animationContainer11,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation11(animationPath11) {
+      animationInstance11.destroy(); 
+      animationInstance11 = lottie.loadAnimation({
+        container: animationContainer11,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath11,
+      });
+    }
+
+
+    function change_roll(){
+
+      const value11 = event.target.value.trim();
+      if (value11) {
+        playAnimation11(tickAnimation11);
+        auntheticate11.innerHTML="";
+        animationContainer11.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate11.innerHTML="*Roll no of the student is filled*"
+            auntheticate11.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        animationInstance11.destroy(); 
+        auntheticate11.innerHTML="";
+        setTimeout(function(){
+            auntheticate11.innerHTML=""
+        },1000)
+      }
+
+    }
+
+    input_roll.addEventListener("change",change_roll);
+
+
+    // ---------------------------Email(Personal)-----------------------------
+
+    var input_mail=document.getElementById("personalEmail");
+    var auntheticate2=document.getElementById("auntheticate2");
+
+    var tickAnimation2 = "tick.json"; 
+    var crossAnimation2 = "cross.json";
+
+    const animationContainer2 = document.getElementById("auntheticate-animation2");
+
+    let animationInstance2 = lottie.loadAnimation({
+      container: animationContainer2,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation2(animationPath2) {
+      animationInstance2.destroy(); 
+      animationInstance2 = lottie.loadAnimation({
+        container: animationContainer2,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath2,
+      });
+    }
+
+    function change_mail(){
+
+        const value2 = event.target.value.trim();
+
+if(value2.length==0){
+
+    playAnimation2(crossAnimation2);
+    auntheticate2.innerHTML="";
+    animationContainer2.style.width="2rem",
+    setTimeout(function(){
+    auntheticate2.innerHTML="*Email id of the student is not filled*"
+    auntheticate2.style.color="#cc0707";
+    },1000)
+
+}
+
+        else{
+            if(value2[value2.length-1]=="@" || value2[0]=="@"){
+
+        auntheticate2.innerHTML="";
+        playAnimation2(crossAnimation2);
+        animationContainer2.style.width="2rem";
+        setTimeout(function(){
+        auntheticate2.innerHTML="*Please enter a valid email id*"
+        auntheticate2.style.color="#cc0707";
+        },1000)
+
+        }
+
+        if(value2.includes("@")==false){
+        auntheticate2.innerHTML="";
+        playAnimation2(crossAnimation2);
+        animationContainer2.style.width="2rem";
+        setTimeout(function(){
+        auntheticate2.innerHTML="*Email id must include @*"
+        auntheticate2.style.color="#cc0707";
+        },1000)
+        }
+        else{
+
+        if(value2.length>0 && value2[value2.length-1]!="@" && value2[0]!="@"){
+        playAnimation2(tickAnimation2);
+        auntheticate2.innerHTML="";
+        animationContainer2.style.width="2.8rem";
+        setTimeout(function(){
+        auntheticate2.innerHTML="*Email id of the student is filled*"
+        auntheticate2.style.color="#0bbc04";
+        },1000)
+        }
+
+        } 
+
+        }
+
+    }
+
+
+
+    input_mail.addEventListener("change",change_mail);
+    
+    
+    //------------------------------Email(official)------------------------- 
+
+    var input_mail_official=document.getElementById("officialEmail");
+    var auntheticate3=document.getElementById("auntheticate3");
+
+    var tickAnimation3 = "tick.json"; 
+    var crossAnimation3 = "cross.json";
+
+const animationContainer3 = document.getElementById("auntheticate-animation3");
+
+let animationInstance3 = lottie.loadAnimation({
+  container: animationContainer3,
+  renderer: "svg",
+  loop: false,
+  autoplay: false,
+  animationData: null,
+});
+
+function playAnimation3(animationPath3) {
+  animationInstance3.destroy(); 
+  animationInstance3 = lottie.loadAnimation({
+    container: animationContainer3,
+    renderer: "svg",
+    loop: false,
+    autoplay: true,
+    path: animationPath3,
+  });
+}
+
+function mail_official(){
+
+    const value3 = event.target.value.trim();
+
+if(value3.length==0){
+
+        animationInstance3.destroy(); 
+        auntheticate3.innerHTML="";
+        setTimeout(function(){
+            auntheticate3.innerHTML=""
+        },1000)
+
+}
+
+    else{
+        if(value3[value3.length-1]=="@" || value3[0]=="@"){
+
+    auntheticate3.innerHTML="";
+    playAnimation3(crossAnimation3);
+    animationContainer3.style.width="2rem";
+    setTimeout(function(){
+    auntheticate3.innerHTML="*Please enter a valid email id*"
+    auntheticate3.style.color="#cc0707";
+    },1000)
+
+    }
+
+    if(value3.includes("@")==false){
+    auntheticate3.innerHTML="";
+    playAnimation3(crossAnimation3);
+    animationContainer3.style.width="2rem";
+    setTimeout(function(){
+    auntheticate3.innerHTML="*Email id must include @*"
+    auntheticate3.style.color="#cc0707";
+    },1000)
+    }
+    else{
+
+    if(value3.length>0 && value3[value3.length-1]!="@" && value3[0]!="@"){
+    playAnimation3(tickAnimation3);
+    auntheticate3.innerHTML="";
+    animationContainer3.style.width="2.8rem";
+    setTimeout(function(){
+    auntheticate3.innerHTML="*Email id of the student is filled*"
+    auntheticate3.style.color="#0bbc04";
+    },1000)
+    }
+
+    } 
+
+    }
+
+
+}
+
+
+input_mail_official.addEventListener("change",mail_official);
+
+
+// ------------------------- Employer ------------------------------
+
+
+
+var input_status=document.getElementById("presentStatus");
+        var auntheticate12=document.getElementById("auntheticate12")
+
+        var tickAnimation12 = "tick.json"; 
+        var crossAnimation12 = "cross.json";
+
+    const animationContainer12 = document.getElementById("auntheticate-animation12");
+
+    let animationInstance12 = lottie.loadAnimation({
+      container: animationContainer12,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation12(animationPath12) {
+      animationInstance12.destroy(); 
+      animationInstance12 = lottie.loadAnimation({
+        container: animationContainer12,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath12,
+      });
+    }
+
+
+
+    function change_status(){
+
+      const value12 = event.target.value.trim();
+      if (value12) {
+        playAnimation12(tickAnimation12);
+        auntheticate12.innerHTML="";
+        animationContainer12.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate12.innerHTML="*Current / Last Employer is filled*"
+            auntheticate12.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        animationInstance12.destroy(); 
+        auntheticate12.innerHTML="";
+        setTimeout(function(){
+            auntheticate12.innerHTML=""
+        },1000)
+      }
+
+    }
+
+
+    input_status.addEventListener("change",change_status);
+
+
+
+    // ----------------------Designation-----------------------
+
+
+    var input_degignation=document.getElementById("designation");
+        var auntheticate13=document.getElementById("auntheticate13")
+
+        var tickAnimation13 = "tick.json"; 
+        var crossAnimation13 = "cross.json";
+
+    const animationContainer13 = document.getElementById("auntheticate-animation13");
+
+    let animationInstance13 = lottie.loadAnimation({
+      container: animationContainer13,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation13(animationPath13) {
+      animationInstance13.destroy(); 
+      animationInstance13 = lottie.loadAnimation({
+        container: animationContainer13,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath13,
+      });
+    }
+
+    // function cross(animationPath13){
+    //     animationInstance13.destroy(); 
+    //   animationInstance13 = lottie.loadAnimation({
+    //     container: animationContainer13,
+    //     renderer: "svg",
+    //     loop: false,
+    //     autoplay: true,
+    //     path: animationPath13,
+    //   });
+    // }
+
+    function change_designation(){
+
+      const value13 = event.target.value.trim();
+      if (value13) {
+        playAnimation13(tickAnimation13);
+        auntheticate13.innerHTML="";
+        animationContainer13.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate13.innerHTML="*Designation / Position in the Company is filled*"
+            auntheticate13.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        animationInstance13.destroy(); 
+        auntheticate13.innerHTML="";
+        setTimeout(function(){
+            auntheticate13.innerHTML=""
+        },1000)
+      }
+
+    }
+
+    // input_name.addEventListener("change", (event) => {
+
+    // });
+    input_degignation.addEventListener("change",change_designation);
+
+
+   // ------------------------ Mobile ---------------------------
+
+   var input_mobile=document.getElementById("mobile");
+    var auntheticate4=document.getElementById("auntheticate4")
+
+        var tickAnimation4 = "tick.json"; 
+        var crossAnimation4 = "cross.json";
+
+    const animationContainer4 = document.getElementById("auntheticate-animation4");
+
+    let animationInstance4 = lottie.loadAnimation({
+      container: animationContainer4,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation4(animationPath4) {
+      animationInstance4.destroy(); 
+      animationInstance4 = lottie.loadAnimation({
+        container: animationContainer4,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath4,
+      });
+    }
+
+
+    input_mobile.addEventListener("change", (event) => {
+     
+        const value4=event.target.value.trim();
+
+        if(value4.length>10){
+
+            playAnimation4(crossAnimation4);
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2rem",
+        setTimeout(function(){
+            auntheticate4.innerHTML="*Mobile number should not contain more than 10 digits*"
+            auntheticate4.style.color="#cc0707";
+        },1000)
+
+        }
+        
+        if(value4.length<10 && value4.length>0){
+            playAnimation4(crossAnimation4);
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2rem",
+        setTimeout(function(){
+            auntheticate4.innerHTML="*Mobile number must contain 10 digits*"
+            auntheticate4.style.color="#cc0707";
+        },1000)
+        }
+        else{
+            if(value4.length===10){
+
+                playAnimation4(tickAnimation4);
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate4.innerHTML="*Mobile number is filled*"
+            auntheticate4.style.color="#0bbc04";
+        },1000)
+
+            }
+
+            else{
+                if(value4.length===0){
+
+                    playAnimation4(crossAnimation4);
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2rem",
+        setTimeout(function(){
+            auntheticate4.innerHTML="*Mobile number is not filled*"
+            auntheticate4.style.color="#cc0707";
+        },1000)
+
+
+                }
+            }
+        }
+
+    });
+    
+// --------------------------Whatsapp--------------------------
+
+4
+    let input_whatsapp=document.getElementById("whatsapp");
+    let auntheticate5=document.getElementById("auntheticate5")
+
+        var tickAnimation5 = "tick.json"; 
+        var crossAnimation5 = "cross.json";
+
+    const animationContainer5 = document.getElementById("auntheticate-animation5");
+
+    let animationInstance5 = lottie.loadAnimation({
+      container: animationContainer5,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation5(animationPath5) {
+      animationInstance5.destroy(); 
+      animationInstance5 = lottie.loadAnimation({
+        container: animationContainer5,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath5,
+      });
+    }
+
+
+    input_whatsapp.addEventListener("change", (event) => {
+     
+        const value5=event.target.value.trim();
+
+                if(value5.length===0){
+
+                  animationInstance5.destroy(); 
+                  auntheticate5.innerHTML="";
+                  setTimeout(function(){
+                      auntheticate5.innerHTML=""
+                  },1000)
+
+
+                }
+
+                else{
+
+                    if(value5.length>10){
+
+                    playAnimation5(crossAnimation5);
+                    auntheticate5.innerHTML="";
+                    animationContainer5.style.width="2rem",
+                    setTimeout(function(){
+                    auntheticate5.innerHTML="*Whatsapp number should not contain more than 10 digits*"
+                    auntheticate5.style.color="#cc0707";
+                    },1000)
+
+                    }
+
+                    if(value5.length<10 && value5.length>0){
+                    playAnimation5(crossAnimation5);
+                    auntheticate5.innerHTML="";
+                    animationContainer5.style.width="2rem",
+                    setTimeout(function(){
+                    auntheticate5.innerHTML="*Whatsapp number must contain 10 digits*"
+                    auntheticate5.style.color="#cc0707";
+                    },1000)
+                    }
+
+                    if(value5.length===10){
+
+                    playAnimation5(tickAnimation5);
+                    auntheticate5.innerHTML="";
+                    animationContainer5.style.width="2.8rem",
+                    setTimeout(function(){
+                    auntheticate5.innerHTML="*Whatsapp number is filled*"
+                    auntheticate5.style.color="#0bbc04";
+                    },1000)
+
+                    }
+
+
+                }
+
+    });
+
+    // -------------------Image uploading ----------------------
+
+    var imageInput = document.getElementById("image");
+    var auntheticate10=document.getElementById("auntheticate10");
+
+
+        var tickAnimation10 = "tick.json"; 
+        var crossAnimation10 = "cross.json";
+
+    const animationContainer10 = document.getElementById("auntheticate-animation10");
+
+    let animationInstance10 = lottie.loadAnimation({
+      container: animationContainer10,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation10(animationPath10) {
+      animationInstance10.destroy(); 
+      animationInstance10 = lottie.loadAnimation({
+        container: animationContainer10,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath10,
+      });
+    }
+
+    imageInput.addEventListener("change", (event) => {
+      const value10 = event.target.value.trim();
+      if (imageInput.files && imageInput.files.length !== 0) {
+        playAnimation10(tickAnimation10);
+        auntheticate10.innerHTML="";
+        animationContainer10.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate10.innerHTML="*Image is uploaded*"
+            auntheticate10.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        if(!imageInput.files || imageInput.files.length === 0){
+
+            playAnimation10(crossAnimation10);
+            auntheticate10.innerHTML="";
+            animationContainer10.style.width="2rem",
+            setTimeout(function(){
+            auntheticate10.innerHTML="*Image is not uploaded*"
+            auntheticate10.style.color="#cc0707";
+        },1000)
+
+        }
+      }
+    });
+
+
+
+// -----------------Address (for correspondence)-----------------
+
+var address_container=document.getElementById("address");
+var auntheticate7=document.getElementById("auntheticate7");
+
+
+        var tickAnimation7 = "tick.json"; 
+        var crossAnimation7 = "cross.json";
+
+    const animationContainer7 = document.getElementById("auntheticate-animation7");
+
+    let animationInstance7 = lottie.loadAnimation({
+      container: animationContainer7,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation7(animationPath7) {
+      animationInstance7.destroy(); 
+      animationInstance7 = lottie.loadAnimation({
+        container: animationContainer7,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath7,
+      });
+    }
+
+    address_container.addEventListener("change", (event) => {
+      const value7 = event.target.value.trim();
+      if (value7) {
+        playAnimation7(tickAnimation7);
+        auntheticate7.innerHTML="";
+        animationContainer7.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate7.innerHTML="*Address is filled*"
+            auntheticate7.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        playAnimation7(crossAnimation7);
+        auntheticate7.innerHTML="";
+        animationContainer7.style.width="2rem",
+        setTimeout(function(){
+            auntheticate7.innerHTML="*Address is not filled*"
+            auntheticate7.style.color="#cc0707";
+        },1000)
+      }
+    });
+
+
+    //-----------------------present working place------------------
+
+
+    var address_working_place=document.getElementById("workingPlace");
+    var auntheticate14=document.getElementById("auntheticate14");
+
+
+        var tickAnimation14 = "tick.json"; 
+        var crossAnimation14 = "cross.json";
+
+    const animationContainer14 = document.getElementById("auntheticate-animation14");
+
+    let animationInstance14 = lottie.loadAnimation({
+      container: animationContainer14,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation14(animationPath14) {
+      animationInstance14.destroy(); 
+      animationInstance14 = lottie.loadAnimation({
+        container: animationContainer14,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath14,
+      });
+    }
+
+    address_working_place.addEventListener("change", (event) => {
+      const value14 = event.target.value.trim();
+      if (value14.length>0) {
+        playAnimation14(tickAnimation14);
+        auntheticate14.innerHTML="";
+        animationContainer14.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate14.innerHTML="*Present Working Place is filled*"
+            auntheticate14.style.color="#0bbc04";
+        },1000)
+
+      } 
+      
+      else {
+        animationInstance14.destroy(); 
+        auntheticate14.innerHTML="";
+        setTimeout(function(){
+            auntheticate14.innerHTML=""
+        },1000)
+      }
+    });
+
+    //------------------------- Company Address ---------------------------------
+
+    var company_address=document.getElementById("companyAddress");
+    var auntheticate15=document.getElementById("auntheticate15");
+
+
+        var tickAnimation15 = "tick.json"; 
+        var crossAnimation15 = "cross.json";
+
+    const animationContainer15 = document.getElementById("auntheticate-animation15");
+
+    let animationInstance15 = lottie.loadAnimation({
+      container: animationContainer15,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation15(animationPath15) {
+      animationInstance15.destroy(); 
+      animationInstance15 = lottie.loadAnimation({
+        container: animationContainer15,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath15,
+      });
+    }
+
+    company_address.addEventListener("change", (event) => {
+      const value15 = event.target.value.trim();
+      if (value15) {
+        playAnimation15(tickAnimation15);
+        auntheticate15.innerHTML="";
+        animationContainer15.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate15.innerHTML="*Company Address / Location is filled*"
+            auntheticate15.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        animationInstance15.destroy(); 
+        auntheticate15.innerHTML="";
+        setTimeout(function(){
+            auntheticate15.innerHTML=""
+        },1000)
+      }
+    });
+
+    // ------------------------------ Current occupation & designation----------------------------
+
+    var area_of_interest=document.getElementById("areaOfInterest");
+    var auntheticate17=document.getElementById("auntheticate17");
+
+
+        var tickAnimation17 = "tick.json"; 
+        var crossAnimation17 = "cross.json";
+
+    const animationContainer17 = document.getElementById("auntheticate-animation17");
+
+    let animationInstance17 = lottie.loadAnimation({
+      container: animationContainer17,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation17(animationPath17) {
+      animationInstance17.destroy(); 
+      animationInstance17 = lottie.loadAnimation({
+        container: animationContainer17,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath17,
+      });
+    }
+
+    area_of_interest.addEventListener("change", (event) => {
+      const value17 = event.target.value.trim();
+      if (value17) {
+        playAnimation17(tickAnimation17);
+        auntheticate17.innerHTML="";
+        animationContainer17.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate17.innerHTML="*Current Work Profile is filled*"
+            auntheticate17.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        animationInstance17.destroy(); 
+        auntheticate17.innerHTML="";
+        setTimeout(function(){
+            auntheticate17.innerHTML=""
+        },1000) 
+      }
+    });
+
+    // ------------------------------ Current Work Profile in Details ----------------------------
+
+    // var current_occupation=document.getElementById("occupation");
+    // var auntheticate16=document.getElementById("auntheticate16");
+
+
+    //     var tickAnimation16 = "tick.json"; 
+    //     var crossAnimation16 = "cross.json";
+
+    // const animationContainer16 = document.getElementById("auntheticate-animation16");
+
+    // let animationInstance16 = lottie.loadAnimation({
+    //   container: animationContainer16,
+    //   renderer: "svg",
+    //   loop: false,
+    //   autoplay: false,
+    //   animationData: null,
+    // });
+
+    // function playAnimation16(animationPath16) {
+    //   animationInstance16.destroy(); 
+    //   animationInstance16 = lottie.loadAnimation({
+    //     container: animationContainer16,
+    //     renderer: "svg",
+    //     loop: false,
+    //     autoplay: true,
+    //     path: animationPath16,
+    //   });
+    // }
+
+    // current_occupation.addEventListener("change", (event) => {
+    //   const value16 = event.target.value.trim();
+    //   if (value16) {
+    //     playAnimation16(tickAnimation16);
+    //     auntheticate16.innerHTML="";
+    //     animationContainer16.style.width="2.8rem",
+    //     setTimeout(function(){
+    //         auntheticate16.innerHTML="*Current Occupation / Designation is filled*"
+    //         auntheticate16.style.color="#0bbc04";
+    //     },1000)
+
+    //   } else {
+    //     animationInstance16.destroy(); 
+    //     auntheticate16.innerHTML="";
+    //     setTimeout(function(){
+    //         auntheticate16.innerHTML=""
+    //     },1000)
+    //   }
+    // });
+
+// -------------------------- Batch---------------------------------------
+
+      var input_batch=document.getElementById("batch");
+        var auntheticate8=document.getElementById("auntheticate8")
+
+        var tickAnimation8 = "tick.json"; 
+        var crossAnimation8 = "cross.json";
+
+    const animationContainer8 = document.getElementById("auntheticate-animation8");
+
+    let animationInstance8 = lottie.loadAnimation({
+      container: animationContainer8,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: null,
+    });
+
+    function playAnimation8(animationPath8) {
+      animationInstance8.destroy(); 
+      animationInstance8 = lottie.loadAnimation({
+        container: animationContainer8,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath8,
+      });
+    }
+
+    function cross_batch(animationPath8){
+        animationInstance8.destroy(); 
+      animationInstance8 = lottie.loadAnimation({
+        container: animationContainer8,
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        path: animationPath8,
+      });
+    }
+
+    function change_batch(){
+
+      const value8 = event.target.value.trim();
+
+      if (value8 && value8!=="batch") {
+        playAnimation8(tickAnimation8);
+        auntheticate8.innerHTML="";
+        animationContainer8.style.width="2.8rem",
+        setTimeout(function(){
+            auntheticate8.innerHTML="*Batch is filled*"
+            auntheticate8.style.color="#0bbc04";
+        },1000)
+
+      } else {
+        if(value8==="batch"){
+
+            cross_batch(crossAnimation8);
+        auntheticate8.innerHTML="";
+        animationContainer8.style.width="2rem",
+        setTimeout(function(){
+            auntheticate8.innerHTML="*Batch is not filled*"
+            auntheticate8.style.color="#cc0707";
+        },1000)
+        }
+        
+      }
+
+    }
+
+    // input_name.addEventListener("change", (event) => {
+
+    // });
+    input_batch.addEventListener("change",change_batch);
+
+
+// --------------------------Specialization------------------------------
+
+
+var sum=0;
+var animationContainer9 = document.getElementById('auntheticate-animation9');
+
+let lottieInstance = lottie.loadAnimation({
+    container: animationContainer9, // Correct container reference
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: null, // Default path set to null
+});
+
+function updateAnimation(isValid) {
+    const animationPath9 = isValid ? 'tick.json' : 'cross.json';
+    lottieInstance.destroy(); // Destroy the current animation instance
+    lottieInstance = lottie.loadAnimation({
+        container: animationContainer9, // Correct container reference
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: animationPath9, // Dynamically update path
+    });
+
+}
+var selectedValues;
+
+function getSelectedValues() {
+    // Get all checked checkboxes and map their values to an array
+     selectedValues = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((checkbox) => checkbox.value);
+        sum++;
+    return selectedValues;
+}
+// Add event listener to checkboxes
+document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+         selectedValues = getSelectedValues();
+        // Check if at least one checkbox is selected
+        const isChecked = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+            .some((input) => input.checked);
+        updateAnimation(isChecked); // Update animation based on selection
+
+        if(selectedValues.length>0){
+          animationContainer9.style.width="2.8rem"
+            setTimeout(function(){
+             document.getElementById("auntheticate9").innerHTML="*Specialization is selected*";
+            document.getElementById("auntheticate9").style.color="#0bbc04";
+            },1000)
+
+
+        }
+        else{
+          animationContainer9.style.width="2rem";
+            setTimeout(function(){
+            document.getElementById("auntheticate9").innerHTML="*Specialization is not selected*";
+            document.getElementById("auntheticate9").style.color="#cc0707"; 
+            },1000)
+
+            sum=0;
+        }
+
+
+    });
+});
+
+
+
+//-----------------------Submit validation--------------------------
+
+document.getElementById("registrationForm").addEventListener("submit",function(event_submit){
+
+
+
+// -------------Name validation-----------------
+const value1 = input_name.value.trim();
+if(value1.length===0){
+event_submit.preventDefault();
+  auntheticate1.innerHTML="";
+    animationContainer1.style.width="2rem",
+    setTimeout(function(){
+        auntheticate1.innerHTML="*Name of the student is mandatory to be filled*"
+        auntheticate1.style.color="#cc0707";
+    },1000)
+}
+
+// --------------------------Email validation----------------
+const value2 = input_mail.value.trim();
+
+if(value2.length===0){
+event_submit.preventDefault();
+  auntheticate2.innerHTML="";
+    animationContainer2.style.width="2rem",
+    setTimeout(function(){
+    auntheticate2.innerHTML="*Email id of the student is mandatory to be filled*"
+    auntheticate2.style.color="#cc0707";
+    },1000)
+
+}
+
+else{
+
+  if(value2[value2.length-1]=="@" || value2[0]=="@"){
+  event_submit.preventDefault();
+auntheticate2.innerHTML="";
+animationContainer2.style.width="2rem";
+setTimeout(function(){
+auntheticate2.innerHTML="*Please enter a valid email id*"
+auntheticate2.style.color="#cc0707";
+},1000)
+
+}
+
+if(value2.includes("@")==false){
+  event_submit.preventDefault();
+        auntheticate2.innerHTML="";
+        animationContainer2.style.width="2rem";
+        setTimeout(function(){
+        auntheticate2.innerHTML="*Email id must include @*"
+        auntheticate2.style.color="#cc0707";
+        },1000)
+        }
+}
+
+// ---------------------Mobile Validation-----------------------
+
+const value4=input_mobile.value.trim();
+
+if(value4.length===0){
+  event_submit.preventDefault();
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2rem",
+        setTimeout(function(){
+            auntheticate4.innerHTML="*Mobile number is mandatory to be filled*"
+            auntheticate4.style.color="#cc0707";
+        },1000)
+
+      }
+      if(value4.length>10){
+        event_submit.preventDefault();
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2rem",
+        setTimeout(function(){
+        auntheticate4.innerHTML="*Mobile number should not contain more than 10 digits*"
+        auntheticate4.style.color="#cc0707";
+        },1000)
+
+        }
+
+        if(value4.length<10 && value4.length>0){
+          event_submit.preventDefault();
+        auntheticate4.innerHTML="";
+        animationContainer4.style.width="2rem",
+        setTimeout(function(){
+        auntheticate4.innerHTML="*Mobile number must contain 10 digits*"
+        auntheticate4.style.color="#cc0707";
+        },1000)
+        }
+
+// -----------------------Whatsapp number----------------------------
+
+const value5=input_whatsapp.value.trim();
+
+
+        if(value5.length>10){
+          event_submit.preventDefault();
+        auntheticate5.innerHTML="";
+        animationContainer5.style.width="2rem",
+        setTimeout(function(){
+        auntheticate5.innerHTML="*Whatsapp number should not contain more than 10 digits*"
+        auntheticate5.style.color="#cc0707";
+        },1000)
+
+        }
+
+        if(value5.length<10 && value5.length>0){
+          event_submit.preventDefault();
+        auntheticate5.innerHTML="";
+        animationContainer5.style.width="2rem",
+        setTimeout(function(){
+        auntheticate5.innerHTML="*Whatsapp number must contain 10 digits*"
+        auntheticate5.style.color="#cc0707";
+        },1000)
+        }
+
+// --------------------Image uploading validation-------------------
+
+  if(!imageInput.files || imageInput.files.length === 0){
+    event_submit.preventDefault();
+  auntheticate10.innerHTML="";
+  animationContainer10.style.width="2rem",
+  setTimeout(function(){
+  auntheticate10.innerHTML="*Image is mandatory to be uploaded*"
+  auntheticate10.style.color="#cc0707";
+  },1000)
+
+  }
+
+  //-------------------Specialization validation-------------------------------
+
+   const checkboxes = document.querySelectorAll('input[name="options[]"]:checked');
+  if(checkboxes.length===0){
+    event_submit.preventDefault();
+            setTimeout(function(){
+             document.getElementById("auntheticate9").innerHTML="*Specialization is mandatory to be selected*";
+            document.getElementById("auntheticate9").style.color="#cc0707";
+            },1000)
+    }
+
+    //---------------------------Batch validation--------------------
+
+    const value8 = input_batch.value.trim();
+
+    if(value8==="batch"){
+      event_submit.preventDefault();
+    auntheticate8.innerHTML="";
+    animationContainer8.style.width="2rem",
+    setTimeout(function(){
+    auntheticate8.innerHTML="*Batch is mandatory to be selected*"
+    auntheticate8.style.color="#cc0707";
+    },1000)
+    }
+
+// ------------------------------Address validation----------------------
+
+const value7 = address_container.value.trim();
+
+  if(value7.length===0){
+
+    event_submit.preventDefault();
+    auntheticate7.innerHTML="";
+        animationContainer7.style.width="2rem",
+        setTimeout(function(){
+            auntheticate7.innerHTML="*Address is mandatory to be filled*"
+            auntheticate7.style.color="#cc0707";
+        },1000)
+  }
+
+
+  // -------------------------------Captcha validation-------------------------
+
+  const value20=input_captcha.value.trim();
+  const captcha_text_value=captcha_text.innerHTML;
+
+  if(value20.length===0){
+
+    event_submit.preventDefault();
+        auntheticate18.innerHTML="";
+        animationContainer18.style.width="2rem",
+        setTimeout(function(){
+            auntheticate18.innerHTML="*Captcha is mandatory to be filled*"
+            auntheticate18.style.color="#cc0707";
+        },1000)
+
+  }
+
+  if(value20!==captcha_text_value && value20.length>0){
+    event_submit.preventDefault();
+    auntheticate18.innerHTML="";
+    animationContainer18.style.width="2rem",
+    setTimeout(function(){
+    auntheticate18.innerHTML="*Captcha is not matched*"
+    auntheticate18.style.color="#cc0707";
+    },1000)
+
+}
+// else{
+  
+//   // document.getElementById("submit-btn").addEventListener("click",function){
+//   //   document.getElementById("scan").style.display="block";
+//   //   document.getElementById("scan").scrollIntoView({behavior:'smooth',block:'start'})
+//   // }
+  
+//   document.getElementById("scan").style.display="block";
+//   document.getElementById("scan").scrollIntoView({behavior:'smooth',block:'start'})
+//   document.querySelector(".form-container").style.opacity="0.3"
+
+// }
+
+if(value1.length>0 && value2.length>0 && value2[value2.length-1]!="@" && value2[0]!="@" && value2.includes("@")==true && value4.length>0 && value4.length===10 && !imageInput.files || imageInput.files.length !== 0 && checkboxes.length!==0 && value8!=="batch" && value7.length!==0 && value20.length>0 && value20===captcha_text_value){
+
+
+    document.getElementById("scan").style.display="block";
+  document.getElementById("scan").scrollIntoView({behavior:'smooth',block:'start'})
+  document.querySelector(".form-container").style.opacity="0.3"
+
+}
+
+
+  
+})
+
+
+   
+
+// ------------image animation ----------------
+
+var animation1 = lottie.loadAnimation({
+            container: document.getElementById("image-div"), 
+            renderer: "svg", 
+            loop: true,
+            autoplay: true,
+            path: "image-animation.json"
+        });
+
+// -------------------------scan----------------------
+
+var animation2 = lottie.loadAnimation({
+            container: document.getElementById("scan"), 
+            renderer: "svg", 
+            loop: true,
+            autoplay: true,
+            path: "form_scan.json"
+        });
+
+        // ----------------------Captcha---------------
+
+          function show(){
+
+            let captcha_sum=""
+            var captcha_string="qwerrtyyuiiopplakjhgfdszcxnnASDFFGHHJJKMNNB1234567890"
+            for(let i=0; i<6;i++){
+              const captcha_value=captcha_string.charAt(Math.floor(Math.random()*captcha_string.length));
+              captcha_sum=captcha_sum+captcha_value;
+
+            }
+            document.getElementById("captcha-text").innerHTML=captcha_sum
+
+          }
+
+          function refresh(){
+            show();
+          }
+    </script>
+
+</body>
+</html>
